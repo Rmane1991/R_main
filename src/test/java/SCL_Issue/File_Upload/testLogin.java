@@ -19,13 +19,19 @@ public class testLogin {
 	@BeforeMethod
 	public void lg() 
 	{
-		lg.login("rajendra", "pass_123");
+		lg.login("pradip", "Abc123def");
 	}
 
-	@Test(priority = 1)
+	//@Test(priority = 1)
 	public void createworddoc() throws IOException, InterruptedException 
 	{
 		nd.worddoc();
+	}
+	
+	@Test(priority = 2)
+	public void createpdf() throws IOException, InterruptedException 
+	{
+		nd.pdf();
 	}
 
 	@AfterMethod

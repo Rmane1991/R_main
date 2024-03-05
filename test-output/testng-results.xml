@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-03-05T15:24:46 IST" name="Default suite" finished-at="2024-03-05T15:36:08 IST" duration-ms="681446">
+    <groups>
+    </groups>
+    <test started-at="2024-03-05T15:24:46 IST" name="Default test" finished-at="2024-03-05T15:36:08 IST" duration-ms="681446">
+      <class name="SCL_Issue.File_Upload.testLogin">
+        <test-method is-config="true" signature="lg()[pri:0, instance:SCL_Issue.File_Upload.testLogin@332f25c8]" started-at="2024-03-05T15:24:46 IST" name="lg" finished-at="2024-03-05T15:25:02 IST" duration-ms="15156" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- lg -->
+        <test-method signature="createpdf()[pri:2, instance:SCL_Issue.File_Upload.testLogin@332f25c8]" started-at="2024-03-05T15:25:02 IST" name="createpdf" finished-at="2024-03-05T15:36:07 IST" duration-ms="665819" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createpdf -->
+        <test-method is-config="true" signature="quit()[pri:0, instance:SCL_Issue.File_Upload.testLogin@332f25c8]" started-at="2024-03-05T15:36:07 IST" name="quit" finished-at="2024-03-05T15:36:08 IST" duration-ms="379" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- SCL_Issue.File_Upload.testLogin -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

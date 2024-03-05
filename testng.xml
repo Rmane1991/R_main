@@ -3,8 +3,9 @@
 <suite name="Suite">
 
 	<listeners>
-		<listener class-name="pagefactory.Listeners" />
+		<listener class-name="Pagefactory.Listeners" />
 	</listeners>
+	
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="SCL_Issue.File_Upload.testLogin" />
