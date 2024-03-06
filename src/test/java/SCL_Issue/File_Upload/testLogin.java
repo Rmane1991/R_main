@@ -28,11 +28,18 @@ public class testLogin {
 		nd.worddoc();
 	}
 	
-	@Test(priority = 2)
+	//@Test(priority = 2)
 	public void createpdf() throws IOException, InterruptedException 
 	{
 		nd.pdf();
 	}
+	
+	@Test(priority = 3)
+	public void MultiplePdf() throws IOException, InterruptedException 
+	{
+		nd.MultiplePdf();
+	}
+
 
 	@AfterMethod
 	public void quit() 
