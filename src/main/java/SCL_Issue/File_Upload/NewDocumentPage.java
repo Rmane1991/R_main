@@ -169,7 +169,7 @@ public class NewDocumentPage extends utility {
 
 	public void pdf() throws IOException {
 
-		FileInputStream fis = new FileInputStream("D:\\PDF\\Pdf.xlsx");
+		FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -220,7 +220,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(1);
-				FileOutputStream fos = new FileOutputStream("D:\\PDF\\Pdf_New.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenamesnew.xlsx");
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -246,7 +246,7 @@ public class NewDocumentPage extends utility {
 
 	public void MultiplePdf() throws IOException, InterruptedException {
 
-		FileInputStream fis = new FileInputStream("D:\\SCAN PDF\\filenames.xlsx");
+		FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -279,11 +279,11 @@ public class NewDocumentPage extends utility {
 
 				utility.isDisaplyedW(btnSaveDocument, wd, 20);
 				btnSaveDocument.click();
-				Thread.sleep(4000);
+				Thread.sleep(5000);
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\SCAN PDF\\filenames_NEW.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_NEW.xlsx");
 
 				String message = lblSaveDocument.getText();
 				if (message.contains("Document updated")) 
@@ -311,7 +311,7 @@ public class NewDocumentPage extends utility {
 			{
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\SCAN PDF\\filenames_New_Catch.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_Catch.xlsx");
 				cell.setCellValue("Fail");
 				wb.write(fos);
 				Thread.sleep(2000);

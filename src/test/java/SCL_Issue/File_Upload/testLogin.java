@@ -19,7 +19,7 @@ public class testLogin {
 	@BeforeMethod
 	public void lg() 
 	{
-		lg.login("pradip", "Abc123def");
+		lg.login("vinayak", "Arnav@123");
 	}
 
 	//@Test(priority = 1)
