@@ -10,9 +10,7 @@ import org.testng.asserts.SoftAssert;
 
 import Pagefactory.utility;
 
-
-public class LoginPage extends utility
-{
+public class LoginPage extends utility {
 	public WebDriver wd;
 
 	@FindBy(id = "userName")
@@ -22,23 +20,23 @@ public class LoginPage extends utility
 	WebElement password;
 
 	@FindBy(xpath = "//select[@id='rooms']")
-	WebElement ddproject ;
+	WebElement ddproject;
 
-	@FindBy(xpath = "//button[@id='submitid']") 
+	@FindBy(xpath = "//button[@id='submitid']")
 	WebElement btnlogin;
-	
+
 	@FindBy(xpath = "//div[@id='header-main']")
 	WebElement header;
-	
+
 	@FindBy(xpath = "//span[@id='loginError']")
 	WebElement lbllogin;
-	
+
 	@FindBy(xpath = "//button[@id='cvModelLoginValidationOk']")
 	WebElement sesionmgr;
-	
+
 	@FindBy(xpath = "//div[@class='nameValidation']")
 	WebElement lblusername;
-	
+
 	@FindBy(xpath = "//div[@class='passwordValidation']")
 	WebElement lblpwd;
 
@@ -52,96 +50,33 @@ public class LoginPage extends utility
 		PageFactory.initElements(wd, this);
 	}
 
-	
-
-	public void login(String User,String Pass) 
+	public void login(String User, String Pass)
 	{
 		SoftAssert softAssert = new SoftAssert();
 		username.sendKeys(User);
 		password.sendKeys(Pass);
-	
-		
-		//For use of visible by text
-		//utility.Dropdownbytxt(ddproject, "DMS-SERVER.SUNDYNE");		
-		
-		//For select by index 
-		
-		utility.Dropdownbyindex(ddproject, 1);	
-		
-		//Direct without using method into utility
-		
-		//Select drop=new Select(ddproject);
-		//drop.selectByIndex(1);
-		
-		btnlogin.click();
-		
-		
-		/*
-		String Emplyuser=lblusername.getText();	
-		String EmplyPass=lblpwd.getText();
-		
-		
-		
-		if(Msg.contains("User does not exist"))
-		{
-			softAssert.assertAll("Invalid Username Test Pass");
-		}
-		
-		else if (Emplyuser.contains("Please Enter Username"))
-		{
-			softAssert.assertAll("Blank Username Test Pass");
-		}
-		
-		else if (EmplyPass.contains("Please Enter password"))
-		{
-			softAssert.assertAll("Blank Password Test Pass");
-		}
-		
-		else 
-		{
-			*/
-		
-		
-			if(utility.isDisaplyedW(sesionmgr, wd, 5))
-			{
-				sesionmgr.click();
-				System.out.println("Another Session Ended");
-			}
-			
-			
-			
-			if(utility.isVisible(header, wd, 10))
-			{
-				System.out.println("Login sucess");
-				softAssert.assertAll("Login With Valid data Pass");
-				
-			}
-		
 
-		
-		
-		
-		/*
-		
-		if(Msg.contains("Invalid Userame"))
+		utility.Dropdownbyindex(ddproject, 1);
+
+		btnlogin.click();
+
+		if (utility.isDisaplyedW(sesionmgr, wd, 5)) 
 		{
-			softAssert.assertAll("Invalid Username");
+			sesionmgr.click();
+			System.out.println("Another Session Ended");
 		}
-		
-		*/
-		
-		else  
+
+		if (utility.isVisible(header, wd, 10)) 
 		{
-			String Msg=lbllogin.getText();
-			System.out.println("Login failed with reason:- "+Msg);	
+			System.out.println("Login sucess");
+			softAssert.assertAll("Login With Valid data Pass");
+
+		} else 
+		{
+			String Msg = lbllogin.getText();
+			System.out.println("Login failed with reason:- " + Msg);
 		}
-		
-		
-		
-		//WebDriverWait wait=new WebDriverWait(wd, Duration.ofSeconds(15));
-		//wait.until(ExpectedConditions.visibilityOf(header));
-		
-		
+
 	}
-	
+
 }
