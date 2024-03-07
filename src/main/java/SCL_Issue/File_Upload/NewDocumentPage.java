@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Date;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -57,7 +58,7 @@ public class NewDocumentPage extends utility {
 	@FindBy(linkText = "SCLUpload")
 	WebElement FolderNameWord;
 
-	@FindBy(linkText = "SalesReportPDF")
+	@FindBy(linkText = "SalesReportPDF_07_03")//SalesReportPDF
 	WebElement FolderNamePDF;
 
 	@FindBy(xpath = "//input[@id='tableFilter']")
@@ -93,6 +94,8 @@ public class NewDocumentPage extends utility {
 	@FindBy(xpath = "//input[@id='indices_46']")
 	WebElement txtCompanyName;
 
+	Date currentDate = new Date();
+	
 	@SuppressWarnings("resource")
 
 	public void worddoc() throws IOException, InterruptedException {
@@ -169,6 +172,7 @@ public class NewDocumentPage extends utility {
 
 	public void pdf() throws IOException {
 
+		
 		FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -183,12 +187,11 @@ public class NewDocumentPage extends utility {
 		FolderNamePDF.click();
 		SubMenuCreateNewDocument.click();
 		utility.Dropdownbytxt(ddDocumenttype, "Sales Report");
-
-		// utility.isVisible(txtCompanyName, wd, 15);
-		// txtCompanyName.sendKeys("Rajendra");
+		
 		if (chkRetain.isSelected()) {
 
-		} else {
+		} else 
+		{
 			chkRetain.click();
 		}
 
@@ -205,7 +208,9 @@ public class NewDocumentPage extends utility {
 
 				if (utility.isAlertPresent(wd) == true) {
 					wd.switchTo().alert().accept();
-				} else {
+				} 
+				else 
+				{
 
 				}
 				Thread.sleep(4000);
@@ -214,13 +219,14 @@ public class NewDocumentPage extends utility {
 				txtCompanyName.sendKeys(sheet.getRow(i).getCell(1).getStringCellValue());
 
 				btnCreateDocument.click();
-
+				Thread.sleep(3000);
+				
 				utility.isInvisible(DocumentUploadloader, wd, 10);
 				String FileUploadStatusMsg = FileUploadlblMessage.getText();
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(1);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenamesnew.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames__"+currentDate+".xlsx");
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -245,8 +251,8 @@ public class NewDocumentPage extends utility {
 	}
 
 	public void MultiplePdf() throws IOException, InterruptedException {
-
-		FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
+		
+	FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -260,7 +266,8 @@ public class NewDocumentPage extends utility {
 		FolderNamePDF.click();
 
 		System.out.println("No of Record Found Into Excel :- " + rowCount);
-		for (int i = 1; i <= rowCount; i++) {
+		for (int i = 1; i <= rowCount; i++) 
+		{
 			try {
 				searchbarPdfDocument.sendKeys(sheet.getRow(i).getCell(1).getStringCellValue());
 				searchbarPdfDocument.sendKeys(Keys.ENTER);
@@ -283,7 +290,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_NEW.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_"+currentDate+".xlsx");
 
 				String message = lblSaveDocument.getText();
 				if (message.contains("Document updated")) 
@@ -323,4 +330,5 @@ public class NewDocumentPage extends utility {
 
 	}
 
+	
 }

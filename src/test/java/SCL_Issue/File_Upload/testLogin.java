@@ -19,7 +19,7 @@ public class testLogin {
 	@BeforeMethod
 	public void lg() 
 	{
-		lg.login("automation", "ccl#234");
+		lg.login("automation", "ccl#123");
 	}
 
 	//@Test(priority = 1)
@@ -28,13 +28,13 @@ public class testLogin {
 		nd.worddoc();
 	}
 	
-	//@Test(priority = 2)
+	@Test(priority = 2)
 	public void createpdf() throws IOException, InterruptedException 
 	{
 		nd.pdf();
 	}
 	
-	@Test(priority = 3)
+	//@Test(priority = 3)
 	public void MultiplePdf() throws IOException, InterruptedException 
 	{
 		nd.MultiplePdf();
