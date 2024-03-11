@@ -9,8 +9,9 @@ import org.testng.annotations.Test;
 
 import Pagefactory.utility;
 
-public class testLogin {
-	utility selUtility = new utility();
+public class testLogin extends utility
+{
+	//utility selUtility = new utility();
 	WebDriver wd = utility.startBrowser("chrome", "http://192.168.1.15:8080/CVWeb/cvLgn");
 
 	LoginPage lg = new LoginPage(wd);

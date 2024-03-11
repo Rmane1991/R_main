@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.Date;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -94,7 +93,13 @@ public class NewDocumentPage extends utility {
 	@FindBy(xpath = "//input[@id='indices_46']")
 	WebElement txtCompanyName;
 
-	Date currentDate = new Date();
+	@FindBy(xpath = "//div[@class='e-toast-message']")
+	WebElement errorwindow;
+	
+	@FindBy(xpath="//button[@class='e-small e-lib e-btn e-control e-primary e-toast-danger']")
+	WebElement btnCloseError; 
+			
+	
 	
 	@SuppressWarnings("resource")
 
@@ -130,6 +135,13 @@ public class NewDocumentPage extends utility {
 				utility.isDisaplyedW(SubMenuNwdocument, wd, 10);
 				a.moveToElement(SubMenuNwdocument).perform();
 				UploadNewFile.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
+				
+				if(errorwindow.isDisplayed()==true)
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
+				
 				Thread.sleep(4000);
 
 				if (utility.isAlertPresent(wd) == true) {
@@ -204,6 +216,11 @@ public class NewDocumentPage extends utility {
 				utility.isDisaplyedW(SubMenuNwdocument, wd, 10);
 				a.moveToElement(SubMenuNwdocument).perform();
 				UploadNewFile.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
+				if(errorwindow.isDisplayed()==true)
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
 				Thread.sleep(4000);
 
 				if (utility.isAlertPresent(wd) == true) {
@@ -225,8 +242,8 @@ public class NewDocumentPage extends utility {
 				String FileUploadStatusMsg = FileUploadlblMessage.getText();
 
 				XSSFRow row = sheet.getRow(i);
-				XSSFCell cell = row.createCell(1);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames__"+currentDate+".xlsx");
+				XSSFCell cell = row.createCell(2);
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_New.xlsx");
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -266,8 +283,7 @@ public class NewDocumentPage extends utility {
 		FolderNamePDF.click();
 
 		System.out.println("No of Record Found Into Excel :- " + rowCount);
-		for (int i = 1; i <= rowCount; i++) 
-		{
+		for (int i = 1; i <= rowCount; i++) {
 			try {
 				searchbarPdfDocument.sendKeys(sheet.getRow(i).getCell(1).getStringCellValue());
 				searchbarPdfDocument.sendKeys(Keys.ENTER);
@@ -276,6 +292,14 @@ public class NewDocumentPage extends utility {
 				a.moveToElement(SubMenuNwdocument).perform();
 
 				UploadNewFile.sendKeys(sheet.getRow(i + 1).getCell(0).getStringCellValue());
+				
+				if(errorwindow.isDisplayed()==true)
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
+				
+				
 				Thread.sleep(4000);
 
 				if (utility.isAlertPresent(wd) == true) {
@@ -290,7 +314,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_"+currentDate+".xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_New.xlsx");
 
 				String message = lblSaveDocument.getText();
 				if (message.contains("Document updated")) 
