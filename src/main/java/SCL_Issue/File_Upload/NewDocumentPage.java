@@ -154,8 +154,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(1);
-				FileOutputStream fos = new FileOutputStream(
-						"D:\\File\\WALLPAPER-DOCS\\WALLPAPER-DOCS\\filenames_New.xlsx");
+				FileOutputStream fos = new FileOutputStream("D:\\File\\WALLPAPER-DOCS\\WALLPAPER-DOCS\\filenames_New.xlsx");
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -173,7 +172,7 @@ public class NewDocumentPage extends utility {
 			{
 				if (utility.isDisaplyedW(errorwindow, wd, 5)) 
 				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					System.out.println(sheet.getRow(i).getCell(1).getStringCellValue()+":- This File is zero KB");
 					btnCloseError.click();
 				}
 				continue;
@@ -260,7 +259,7 @@ public class NewDocumentPage extends utility {
 			} catch (Exception e) {
 				if (utility.isDisaplyedW(errorwindow, wd, 1)) 
 				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					System.out.println(sheet.getRow(i).getCell(1).getStringCellValue()+":- This File is zero KB");
 					btnCloseError.click();
 				}
 				continue;
@@ -342,7 +341,7 @@ public class NewDocumentPage extends utility {
 			{
 				if (utility.isDisaplyedW(errorwindow, wd, 5)) 
 				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					System.out.println(sheet.getRow(i).getCell(1).getStringCellValue()+":- This File is zero KB");
 					btnCloseError.click();
 				}
 				
