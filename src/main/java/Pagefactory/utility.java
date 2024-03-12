@@ -1,6 +1,7 @@
 package Pagefactory;
 
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -8,6 +9,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,17 +27,60 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class utility 
 {
 	
+	
+	public static class ConfigReader {
+	    private static String Username ;
+		private static Properties properties;
+	    private static String browser;
+	    private static String url;
+	    private static String Password;
+	   // private static long implicitwait ;
+
+	    static {
+	        properties = new Properties();
+	        try {
+	            FileInputStream fis = new FileInputStream("C:\\Users\\DELL\\eclipse-workspace\\SCL_Issue\\src\\main\\java\\properties\\Config.properties");
+	            properties.load(fis);
+	            browser = properties.getProperty("browser");
+	            url = properties.getProperty("url");
+	            Username = properties.getProperty("Username");
+	            Password= properties.getProperty("Password");
+	           // implicitwait=properties.getProperty("implicitwait");
+	            //implicitwait  = Long.parseLong(properties.getProperty("implicitWaitSeconds"));
+	            
+	        } catch (IOException e) 
+	        {
+	            //e.printStackTrace();
+	        }
+	    }
+
+	    public static String getBrowser() {
+	        return browser;
+	    }
+
+	    public static String getUrl() {
+	        return url;
+	    }
+	    
+	    public static String getUsername() {
+	        return Username;
+	    }
+	    
+	    public static String getPassword() {
+	        return Password;
+	    }
+	   
+	    
+	}	
+	
+	
 		public static WebDriver wd;
 		
-		public static WebDriver startBrowser(String browsename, String URL)
+		public static WebDriver startBrowser() //String browsename, String URL
 
 		{
-			/*
-			 * Properties prop= new Properties(); FileInputStream fis=new
-			 * FileInputStream("/LTM/src/GlobalData.properties"); prop.load(fis); String
-			 * browsename=prop.getProperty("browser");
-			 */
-			if (browsename.equalsIgnoreCase("chrome")) {
+			
+			if (ConfigReader.getBrowser().equalsIgnoreCase("chrome")) {
 				WebDriverManager.chromedriver().setup();
 				//ChromeOptions options = new ChromeOptions();
 				//options.setAcceptInsecureCerts(true);
@@ -43,20 +88,20 @@ public class utility
 				wd = new ChromeDriver();
 				new WebDriverWait(wd, Duration.ofSeconds(20));
 
-			} else if (browsename.equalsIgnoreCase("firefox")) {
+			} else if (ConfigReader.getBrowser().equalsIgnoreCase("firefox")) {
 				WebDriverManager.firefoxdriver().setup();
 				FirefoxOptions options = new FirefoxOptions();
 				options.setAcceptInsecureCerts(true);
 				wd = new FirefoxDriver(options);
 				wd.manage().window().maximize();
 
-			} else if (browsename.equalsIgnoreCase("IE")) {
+			} else if (ConfigReader.getBrowser().equalsIgnoreCase("IE")) {
 				WebDriverManager.edgedriver().setup();
 				wd = new InternetExplorerDriver();
 			}
 			wd.manage().window().maximize();
 			new WebDriverWait(wd, Duration.ofSeconds(30));
-			wd.get(URL);
+			wd.get(ConfigReader.getUrl());
 			return wd;
 
 		}

@@ -136,20 +136,16 @@ public class NewDocumentPage extends utility {
 				a.moveToElement(SubMenuNwdocument).perform();
 				UploadNewFile.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
 				
-				if(errorwindow.isDisplayed()==true)
-				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
-					btnCloseError.click();
-				}
-				
-				Thread.sleep(4000);
+				Thread.sleep(3000);
 
 				if (utility.isAlertPresent(wd) == true) {
 					wd.switchTo().alert().accept();
-				} else {
+					Thread.sleep(4000);
+				} else 
+				{
 
 				}
-				Thread.sleep(4000);
+				
 
 				btnCreateDocument.click();
 
@@ -173,7 +169,13 @@ public class NewDocumentPage extends utility {
 				btnNewDocument.click();
 				FileUploadStatusMsg = "";
 
-			} catch (Exception e) {
+			} catch (Exception e) 
+			{
+				if (utility.isDisaplyedW(errorwindow, wd, 5)) 
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
 				continue;
 
 			}
@@ -216,21 +218,19 @@ public class NewDocumentPage extends utility {
 				utility.isDisaplyedW(SubMenuNwdocument, wd, 10);
 				a.moveToElement(SubMenuNwdocument).perform();
 				UploadNewFile.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
-				if(errorwindow.isDisplayed()==true)
-				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
-					btnCloseError.click();
-				}
-				Thread.sleep(4000);
+				
+				Thread.sleep(2000);
 
-				if (utility.isAlertPresent(wd) == true) {
+				if (utility.isAlertPresent(wd) == true) 
+				{
 					wd.switchTo().alert().accept();
+					Thread.sleep(4000);
 				} 
 				else 
 				{
 
 				}
-				Thread.sleep(4000);
+				
 				utility.isVisible(txtCompanyName, wd, 15);
 				txtCompanyName.clear();
 				txtCompanyName.sendKeys(sheet.getRow(i).getCell(1).getStringCellValue());
@@ -258,6 +258,11 @@ public class NewDocumentPage extends utility {
 				FileUploadStatusMsg = "";
 
 			} catch (Exception e) {
+				if (utility.isDisaplyedW(errorwindow, wd, 1)) 
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
 				continue;
 
 			}
@@ -292,18 +297,13 @@ public class NewDocumentPage extends utility {
 				a.moveToElement(SubMenuNwdocument).perform();
 
 				UploadNewFile.sendKeys(sheet.getRow(i + 1).getCell(0).getStringCellValue());
-				
-				if(errorwindow.isDisplayed()==true)
-				{
-					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
-					btnCloseError.click();
-				}
-				
-				
-				Thread.sleep(4000);
+				Thread.sleep(3000);
 
-				if (utility.isAlertPresent(wd) == true) {
+				if (utility.isAlertPresent(wd) == true) 
+				{
 					wd.switchTo().alert().accept();
+					Thread.sleep(3000);
+					
 				} else {
 
 				}
@@ -340,6 +340,12 @@ public class NewDocumentPage extends utility {
 			} catch (Exception e)
 
 			{
+				if (utility.isDisaplyedW(errorwindow, wd, 5)) 
+				{
+					System.out.println(sheet.getRow(i).getCell(0).getStringCellValue()+":- This File is zero KB");
+					btnCloseError.click();
+				}
+				
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
 				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_Catch.xlsx");

@@ -12,15 +12,15 @@ import Pagefactory.utility;
 public class testLogin extends utility
 {
 	//utility selUtility = new utility();
-	WebDriver wd = utility.startBrowser("chrome", "http://192.168.1.15:8080/CVWeb/cvLgn");
+	WebDriver wd = utility.startBrowser(); //"chrome", "http://192.168.1.15:8080/CVWeb/cvLgn"
 
 	LoginPage lg = new LoginPage(wd);
 	NewDocumentPage nd = new NewDocumentPage(wd);
 
 	@BeforeMethod
-	public void lg() 
+	public void lg() throws IOException 
 	{
-		lg.login("automation", "ccl#123");
+		lg.login(); //"automation", "ccl#123"
 	}
 
 	//@Test(priority = 1)

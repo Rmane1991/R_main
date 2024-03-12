@@ -1,6 +1,10 @@
 package SCL_Issue.File_Upload;
 
+
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
+
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +15,11 @@ import org.testng.asserts.SoftAssert;
 import Pagefactory.utility;
 
 public class LoginPage extends utility {
+	
+	Properties prop =new Properties();
+	
+	
+	
 	public WebDriver wd;
 
 	@FindBy(id = "userName")
@@ -50,11 +59,13 @@ public class LoginPage extends utility {
 		PageFactory.initElements(wd, this);
 	}
 
-	public void login(String User, String Pass)
+	public void login() throws IOException //String User, String Pass
+	
+	
 	{
 		SoftAssert softAssert = new SoftAssert();
-		username.sendKeys(User);
-		password.sendKeys(Pass);
+		username.sendKeys(ConfigReader.getUsername());
+		password.sendKeys(ConfigReader.getPassword());
 
 		utility.Dropdownbyindex(ddproject, 1);
 
