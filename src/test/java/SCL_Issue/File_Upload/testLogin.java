@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Pagefactory.utility;
@@ -17,10 +16,13 @@ public class testLogin extends utility
 	LoginPage lg = new LoginPage(wd);
 	NewDocumentPage nd = new NewDocumentPage(wd);
 
-	@BeforeMethod
+	//@BeforeMethod
+	@Test(priority = 1)
 	public void lg() throws IOException 
 	{
 		lg.login(); //"automation", "ccl#123"
+		
+		
 	}
 
 	//@Test(priority = 1)

@@ -1,5 +1,6 @@
 package SCL_Issue.File_Upload;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -120,7 +121,7 @@ public class NewDocumentPage extends utility {
 			chkRetain.click();
 		}
 
-		FileInputStream fis = new FileInputStream("D:\\File\\WALLPAPER-DOCS\\WALLPAPER-DOCS\\filenames.xlsx");
+		FileInputStream fis = new FileInputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf.xlsx"));
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
 		XSSFSheet sheet = wb.getSheet("Sheet2");
@@ -154,7 +155,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(1);
-				FileOutputStream fos = new FileOutputStream("D:\\File\\WALLPAPER-DOCS\\WALLPAPER-DOCS\\filenames_New.xlsx");
+				FileOutputStream fos = new FileOutputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf_New.xlsx"));
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -186,7 +187,7 @@ public class NewDocumentPage extends utility {
 	public void pdf() throws IOException {
 
 		
-		FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
+		FileInputStream fis = new FileInputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf.xlsx"));
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -242,7 +243,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_New.xlsx");
+				FileOutputStream fos = new FileOutputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf_New.xlsx"));
 
 				if (FileUploadStatusMsg.contains("Document created successfully")) {
 					cell.setCellValue("File Upload");
@@ -273,7 +274,7 @@ public class NewDocumentPage extends utility {
 
 	public void MultiplePdf() throws IOException, InterruptedException {
 		
-	FileInputStream fis = new FileInputStream("D:\\Data\\File\\SCAN PDF\\filenames.xlsx");
+	FileInputStream fis = new FileInputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf.xlsx"));
 		@SuppressWarnings("resource")
 		XSSFWorkbook wb = new XSSFWorkbook(fis);
 
@@ -313,7 +314,7 @@ public class NewDocumentPage extends utility {
 
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_New.xlsx");
+				FileOutputStream fos = new FileOutputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf_New.xlsx"));
 
 				String message = lblSaveDocument.getText();
 				if (message.contains("Document updated")) 
@@ -347,7 +348,7 @@ public class NewDocumentPage extends utility {
 				
 				XSSFRow row = sheet.getRow(i);
 				XSSFCell cell = row.createCell(2);
-				FileOutputStream fos = new FileOutputStream("D:\\Data\\File\\SCAN PDF\\filenames_Catch.xlsx");
+				FileOutputStream fos = new FileOutputStream((System.getProperty("user.dir")+ File.separator + "\\Files\\Filenames_Pdf_Catch.xlsx"));
 				cell.setCellValue("Fail");
 				wb.write(fos);
 				Thread.sleep(2000);

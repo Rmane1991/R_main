@@ -5,7 +5,6 @@
     <classes>
       <class name="SCL_Issue.File_Upload.testLogin">
         <methods>
-          <include name="createpdf"/>
           <include name="quit"/>
           <include name="lg"/>
         </methods>

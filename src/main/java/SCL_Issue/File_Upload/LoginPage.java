@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.asserts.SoftAssert;
-
 import Pagefactory.utility;
 
 public class LoginPage extends utility {
@@ -59,11 +57,12 @@ public class LoginPage extends utility {
 		PageFactory.initElements(wd, this);
 	}
 
+	
 	public void login() throws IOException //String User, String Pass
 	
 	
 	{
-		SoftAssert softAssert = new SoftAssert();
+		//SoftAssert softAssert = new SoftAssert();
 		username.sendKeys(ConfigReader.getUsername());
 		password.sendKeys(ConfigReader.getPassword());
 
@@ -71,22 +70,27 @@ public class LoginPage extends utility {
 
 		btnlogin.click();
 
+		
 		if (utility.isDisaplyedW(sesionmgr, wd, 5)) 
 		{
 			sesionmgr.click();
 			System.out.println("Another Session Ended");
 		}
-
+		
+		String Msg = lbllogin.getText();
+		System.out.println("Login failed with reason:- " + Msg);
+		
+		/*
 		if (utility.isVisible(header, wd, 10)) 
 		{
 			System.out.println("Login sucess");
-			softAssert.assertAll("Login With Valid data Pass");
-
-		} else 
+			
+			} else 
 		{
-			String Msg = lbllogin.getText();
-			System.out.println("Login failed with reason:- " + Msg);
+			
 		}
+		*/
+	
 
 	}
 

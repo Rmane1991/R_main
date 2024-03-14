@@ -1,6 +1,7 @@
 package Pagefactory;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -39,7 +40,7 @@ public class utility
 	    static {
 	        properties = new Properties();
 	        try {
-	            FileInputStream fis = new FileInputStream("C:\\Users\\DELL\\eclipse-workspace\\SCL_Issue\\src\\main\\java\\properties\\Config.properties");
+	        	FileInputStream fis = new FileInputStream((System.getProperty("user.dir")+ File.separator + "\\src\\main\\java\\properties\\Config.properties"));
 	            properties.load(fis);
 	            browser = properties.getProperty("browser");
 	            url = properties.getProperty("url");
