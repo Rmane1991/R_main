@@ -77,18 +77,17 @@ public class LoginPage extends utility {
 			System.out.println("Another Session Ended");
 		}
 		
-		String Msg = lbllogin.getText();
-		System.out.println("Login failed with reason:- " + Msg);
+		if (utility.isVisible(header, wd, 10)) {
+			System.out.println("Login sucess");
+
+		} else {
+			String Msg = lbllogin.getText();
+			System.out.println("Login failed with reason:- " + Msg);
+
+		}		
 		
 		/*
-		if (utility.isVisible(header, wd, 10)) 
-		{
-			System.out.println("Login sucess");
-			
-			} else 
-		{
-			
-		}
+		
 		*/
 	
 
