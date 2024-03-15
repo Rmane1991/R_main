@@ -217,7 +217,10 @@ public class NewDocumentPage extends utility {
 				Thread.sleep(2000);
 				utility.isDisaplyedW(SubMenuNwdocument, wd, 10);
 				a.moveToElement(SubMenuNwdocument).perform();
-				UploadNewFile.sendKeys(sheet.getRow(i).getCell(0).getStringCellValue());
+				String filepath= (System.getProperty("user.dir")+"\\Files\\PDF\\");
+				//System.out.println(filepath);
+				//System.out.println(filepath+sheet.getRow(i).getCell(1).getStringCellValue());
+				UploadNewFile.sendKeys(filepath+sheet.getRow(i).getCell(1).getStringCellValue());
 				
 				Thread.sleep(2000);
 
@@ -295,8 +298,8 @@ public class NewDocumentPage extends utility {
 				clickDocument.click();
 				utility.isDisaplyedW(SubMenuNwdocument, wd, 10);
 				a.moveToElement(SubMenuNwdocument).perform();
-
-				UploadNewFile.sendKeys(sheet.getRow(i + 1).getCell(0).getStringCellValue());
+				String filepath= (System.getProperty("user.dir")+"\\Files\\PDF\\");
+				UploadNewFile.sendKeys(filepath+sheet.getRow(i + 1).getCell(1).getStringCellValue());
 				Thread.sleep(3000);
 
 				if (utility.isAlertPresent(wd) == true) 
