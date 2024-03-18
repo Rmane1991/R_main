@@ -62,7 +62,6 @@ public class LoginPage extends utility {
 	
 	
 	{
-		//SoftAssert softAssert = new SoftAssert();
 		username.sendKeys(ConfigReader.getUsername());
 		password.sendKeys(ConfigReader.getPassword());
 
@@ -71,7 +70,7 @@ public class LoginPage extends utility {
 		btnlogin.click();
 
 		
-		if (utility.isDisaplyedW(sesionmgr, wd, 5)) 
+		if (utility.isDisaplyedW(sesionmgr, wd, 2)) 
 		{
 			sesionmgr.click();
 			System.out.println("Another Session Ended");
@@ -85,11 +84,6 @@ public class LoginPage extends utility {
 			System.out.println("Login failed with reason:- " + Msg);
 
 		}		
-		
-		/*
-		
-		*/
-	
 
 	}
 
