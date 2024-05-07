@@ -3,6 +3,7 @@ package SCL_Issue.File_Upload;
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Pagefactory.utility;
@@ -14,6 +15,7 @@ public class testLogin extends utility
 	LoginPage lg = new LoginPage(wd);
 	NewDocumentPage nd = new NewDocumentPage(wd);
 
+	//@BeforeMethod
 	@Test(priority = 0)
 	public void Login() throws IOException 
 	{
@@ -37,7 +39,6 @@ public class testLogin extends utility
 	@Test(priority = 3)
 	public void MultiplePdf() throws IOException, InterruptedException 
 	{
-
 		System.out.println("Upload Word Started");
 		nd.MultiplePdf();
 	}
